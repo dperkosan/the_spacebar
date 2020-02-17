@@ -38,7 +38,12 @@ class ArticleController extends AbstractController {
 
         // get bundle configuration
         // php bin/console config:dump KnpMarkdownBundle
+
+        // current configuration
+        // php bin/console debug:config KnpMarkdownBundle
         dump($markdown);
+
+        dump($cache);
 
         $articleContent = <<<EOF
         Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,

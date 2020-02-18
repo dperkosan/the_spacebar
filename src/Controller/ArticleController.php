@@ -3,11 +3,10 @@
 namespace App\Controller;
 
 use Psr\Log\LoggerInterface;
-use Michelf\MarkdownInterface;
+use App\Service\MarkdownHelper;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController {
@@ -23,7 +22,7 @@ class ArticleController extends AbstractController {
     /**
      * @Route("/news/{slug}", name="article_show")
      */
-    public function show($slug, MarkdownInterface $markdown, AdapterInterface $cache){
+    public function show($slug, MarkdownHelper $markdownHelper){
         // return new Response(sprintf(
         //     'Some text of article: %s', $slug
         // ));
@@ -41,9 +40,7 @@ class ArticleController extends AbstractController {
 
         // current configuration
         // php bin/console debug:config KnpMarkdownBundle
-        dump($markdown);
-
-        dump($cache);
+        dump($markdownHelper);
 
         $articleContent = <<<EOF
         Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
@@ -62,14 +59,9 @@ class ArticleController extends AbstractController {
         strip steak pork belly aliquip capicola officia. Labore deserunt esse chicken lorem shoulder tail consectetur
         cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim capicola irure pancetta chuck
         fugiat.
-        EOF;
+EOF;
 
-        $item = $cache->getItem('markdown_'.md5($articleContent));
-        if(!$item->isHit()){
-            $item->set($markdown->transform($articleContent));
-            $cache->save($item);
-        }
-        $articleContent = $item->get();
+        $articleContent = $markdownHelper->parse($articleContent);
 
         return $this->render('article/show.html.twig', [
             'title' => ucwords(str_replace('-', ' ', $slug)),

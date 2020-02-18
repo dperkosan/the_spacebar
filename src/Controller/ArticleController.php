@@ -40,6 +40,15 @@ class ArticleController extends AbstractController {
 
         // current configuration
         // php bin/console debug:config KnpMarkdownBundle
+
+        // info about service (or dump the service)
+        // php bin/console debug:container monolog.logger
+
+        // show services in the container:
+        // php bin/console debug:container
+
+        // show filtered services in the container:
+        // php bin/console debug:container log
         dump($markdownHelper);
 
         $articleContent = <<<EOF

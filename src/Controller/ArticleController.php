@@ -54,6 +54,9 @@ class ArticleController extends AbstractController {
 
         // show container parameters:
         // php bin/console debug:container --parameters
+
+        // show all env vars
+        // php bin/console about
         dump($markdownHelper);
 
         $articleContent = <<<EOF

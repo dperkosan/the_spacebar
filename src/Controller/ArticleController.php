@@ -22,10 +22,12 @@ class ArticleController extends AbstractController {
     /**
      * @Route("/news/{slug}", name="article_show")
      */
-    public function show($slug, MarkdownHelper $markdownHelper){
+    public function show($slug, MarkdownHelper $markdownHelper, bool $isDebug){
         // return new Response(sprintf(
         //     'Some text of article: %s', $slug
         // ));
+
+        dump($isDebug);
 
         $comments = [
             'This is my comment',

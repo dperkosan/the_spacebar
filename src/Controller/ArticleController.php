@@ -49,6 +49,9 @@ class ArticleController extends AbstractController {
 
         // show filtered services in the container:
         // php bin/console debug:container log
+
+        // show container parameters:
+        // php bin/console debug:container --parameters
         dump($markdownHelper);
 
         $articleContent = <<<EOF

@@ -93,6 +93,9 @@
     "knplabs/knp-markdown-bundle": {
         "version": "1.8.1"
     },
+    "knplabs/knp-time-bundle": {
+        "version": "v1.11.0"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -118,7 +121,7 @@
         "version": "2.7.0"
     },
     "php": {
-        "version": "7.4"
+        "version": "7.2"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -331,6 +334,22 @@
     "symfony/stopwatch": {
         "version": "v4.4.4"
     },
+    "symfony/templating": {
+        "version": "v4.4.4"
+    },
+    "symfony/translation": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "2ad9d2545bce8ca1a863e50e92141f0b9d87ffcd"
+        },
+        "files": [
+            "config/packages/translation.yaml",
+            "translations/.gitignore"
+        ]
+    },
     "symfony/translation-contracts": {
         "version": "v2.0.1"
     },
@@ -385,5 +404,11 @@
     },
     "webimpress/safe-writer": {
         "version": "2.0.0"
+    },
+    "zendframework/zend-code": {
+        "version": "3.4.1"
+    },
+    "zendframework/zend-eventmanager": {
+        "version": "3.2.1"
     }
 }
